@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Hajarat V5</title>
+
+<style>
+
+/* =========================
+   BASIC
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial,sans-serif;
+    background:#080808;
+    color:white;
+    transition:0.4s;
+}
+
+
+/* =========================
+   LIGHT MODE
+========================= */
+
+body.light{
+    background:#f4f4f4;
+    color:#111;
+}
+
+body.light nav{
+    background:rgba(255,255,255,0.95);
+}
+
+body.light nav a{
+    color:#111;
+}
+
+body.light .hero{
+    background:
+    radial-gradient(circle at top,#bcefff,transparent 45%),
+    #f4f4f4;
+}
+
+body.light .hero p{
+    color:#555;
+}
+
+body.light .about-text{
+    color:#555;
+}
+
+body.light .card{
+    background:white;
+    border-color:#ddd;
+}
+
+body.light .card p{
+    color:#555;
+}
+
+body.light .contact{
+    background:#e8e8e8;
+}
+
+body.light footer{
+    background:#ddd;
+}
+
+
+/* =========================
+   NAVBAR
+========================= */
+
+nav{
+    position:fixed;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:65px;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:0 20px;
+
+    background:rgba(8,8,8,0.92);
+
+    backdrop-filter:blur(10px);
+
+    z-index:1000;
+}
+
+.logo{
+    font-size:22px;
+    font-weight:bold;
+    color:#00e5ff;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+
+    margin-left:12px;
+
+    font-size:13px;
+}
+
+.mode-btn{
+    margin-left:8px;
+
+    border:none;
+
+    width:38px;
+    height:38px;
+
+    border-radius:50%;
+
+    background:#00e5ff;
+
+    font-size:18px;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    min-height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+
+    padding:100px 20px 50px;
+
+    background:
+    radial-gradient(circle at 50% 20%,#164653,transparent 45%),
+    #080808;
+}
+
+.hero-content{
+    max-width:700px;
+
+    animation:heroIn 1.3s ease;
+}
+
+
+/* PROFILE */
+
+.profile{
+    width:130px;
+    height:130px;
+
+    border-radius:50%;
+
+    margin:auto;
+    margin-bottom:25px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:#151515;
+
+    border:3px solid #00e5ff;
+
+    font-size:65px;
+
+    box-shadow:
+    0 0 30px rgba(0,229,255,0.25);
+}
+
+.hero h1{
+    font-size:48px;
+
+    margin-bottom:18px;
+}
+
+.hero h1 span{
+    color:#00e5ff;
+}
+
+.hero p{
+    color:#aaa;
+
+    font-size:18px;
+
+    line-height:1.7;
+}
+
+.main-btn{
+    display:inline-block;
+
+    margin-top:30px;
+
+    padding:15px 32px;
+
+    border-radius:30px;
+
+    background:#00e5ff;
+
+    color:#001014;
+
+    text-decoration:none;
+
+    font-weight:bold;
+
+    transition:0.3s;
+}
+
+.main-btn:hover{
+    transform:scale(1.08);
+}
+
+
+/* =========================
+   SECTIONS
+========================= */
+
+.section{
+    padding:85px 20px;
+
+    text-align:center;
+}
+
+.section h2{
+    font-size:34px;
+
+    margin-bottom:30px;
+}
+
+.about-text{
+    max-width:650px;
+
+    margin:auto;
+
+    color:#aaa;
+
+    line-height:1.8;
+
+    font-size:17px;
+}
+
+
+/* =========================
+   SKILLS
+========================= */
+
+.skills{
+    max-width:700px;
+
+    margin:40px auto 0;
+
+    text-align:left;
+}
+
+.skill{
+    margin-bottom:25px;
+}
+
+.skill-title{
+    display:flex;
+    justify-content:space-between;
+
+    margin-bottom:8px;
+
+    font-size:15px;
+}
+
+.progress{
+    width:100%;
+
+    height:10px;
+
+    background:#242424;
+
+    border-radius:20px;
+
+    overflow:hidden;
+}
+
+.progress span{
+    display:block;
+
+    height:100%;
+
+    width:0;
+
+    background:#00e5ff;
+
+    border-radius:20px;
+
+    animation:progress 1.8s forwards;
+}
+
+.html{
+    --width:90%;
+}
+
+.css{
+    --width:80%;
+}
+
+.js{
+    --width:65%;
+}
+
+.progress span{
+    width:var(--width);
+}
+
+
+/* =========================
+   CARDS
+========================= */
+
+.cards{
+    max-width:1000px;
+
+    margin:auto;
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:20px;
+
+    flex-wrap:wrap;
+}
+
+.card{
+    width:280px;
+
+    padding:30px 20px;
+
+    background:#151515;
+
+    border:1px solid #292929;
+
+    border-radius:20px;
+
+    transition:0.35s;
+
+    opacity:0;
+
+    animation:cardIn 1s forwards;
+}
+
+.card:nth-child(2){
+    animation-delay:0.2s;
+}
+
+.card:nth-child(3){
+    animation-delay:0.4s;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+
+    border-color:#00e5ff;
+}
+
+.icon{
+    font-size:45px;
+
+    margin-bottom:15px;
+}
+
+.card h3{
+    margin-bottom:12px;
+}
+
+.card p{
+    color:#999;
+
+    line-height:1.6;
+}
+
+
+/* =========================
+   CONTACT
+========================= */
+
+.contact{
+    background:#101010;
+}
+
+.contact p{
+    color:#999;
+
+    margin-bottom:25px;
+}
+
+.contact button{
+    padding:14px 30px;
+
+    border:none;
+
+    border-radius:30px;
+
+    background:#00e5ff;
+
+    font-size:16px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    padding:28px;
+
+    text-align:center;
+
+    background:#050505;
+
+    color:#777;
+}
+
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes heroIn{
+
+    from{
+        opacity:0;
+        transform:translateY(40px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+@keyframes cardIn{
+
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+@keyframes progress{
+
+    from{
+        width:0;
+    }
+
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:600px){
+
+    nav{
+        padding:0 12px;
+    }
+
+    .logo{
+        font-size:18px;
+    }
+
+    nav a{
+        font-size:11px;
+        margin-left:5px;
+    }
+
+    .hero h1{
+        font-size:36px;
+    }
+
+    .hero p{
+        font-size:16px;
+    }
+
+    .profile{
+        width:110px;
+        height:110px;
+        font-size:55px;
+    }
+
+    .card{
+        width:100%;
+        max-width:330px;
+    }
+
+    .section{
+        padding:65px 18px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     NAVBAR
+========================= -->
+
+<nav>
+
+<div class="logo">
+HAJARAT
+</div>
+
+<div>
+
+<a href="#home">Home</a>
+
+<a href="#about">About</a>
+
+<a href="#skills">Skills</a>
+
+<a href="#contact">Contact</a>
+
+<button
+class="mode-btn"
+onclick="toggleMode()">
+
+🌙
+
+</button>
+
+</div>
+
+</nav>
+
+
+
+<!-- =========================
+     HOME
+========================= -->
+
+<section
+class="hero"
+id="home">
+
+<div class="hero-content">
+
+
+<div class="profile">
+👨‍💻
+</div>
+
+
+<h1>
+
+Hello, I'm
+<span>Hajarat</span>
+👋
+
+</h1>
+
+
+<p>
+
+Welcome to my personal website.
+
+I'm learning web development,
+design and programming.
+
+</p>
+
+
+<a
+href="#about"
+class="main-btn">
+
+Explore My Website
+
+</a>
+
+
+</div>
+
+</section>
+
+
+
+<!-- =========================
+     ABOUT
+========================= -->
+
+<section
+class="section"
+id="about">
+
+
+<h2>
+About Me
+</h2>
+
+
+<p class="about-text">
+
+Hi! I'm Hajarat.
+
+I'm learning how websites and
+applications are created.
+
+I enjoy coding, designing and
+building new projects.
+
+My goal is to keep learning
+and create useful digital
+projects.
+
+</p>
+
+
+</section>
+
+
+
+<!-- =========================
+     SKILLS
+========================= -->
+
+<section
+class="section"
+id="skills">
+
+
+<h2>
+My Skills
+</h2>
+
+
+<div class="skills">
+
+
+<div class="skill">
+
+<div class="skill-title">
+
+<span>HTML</span>
+
+<span>90%</span>
+
+</div>
+
+<div class="progress">
+
+<span class="html"></span>
+
+</div>
+
+</div>
+
+
+
+<div class="skill">
+
+<div class="skill-title">
+
+<span>CSS</span>
+
+<span>80%</span>
+
+</div>
+
+<div class="progress">
+
+<span class="css"></span>
+
+</div>
+
+</div>
+
+
+
+<div class="skill">
+
+<div class="skill-title">
+
+<span>JavaScript</span>
+
+<span>65%</span>
+
+</div>
+
+<div class="progress">
+
+<span class="js"></span>
+
+</div>
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+
+<!-- =========================
+     SERVICES
+========================= -->
+
+<section
+class="section">
+
+
+<h2>
+What I Do
+</h2>
+
+
+<div class="cards">
+
+
+<div class="card">
+
+<div class="icon">
+💻
+</div>
+
+<h3>
+Web Development
+</h3>
+
+<p>
+
+Creating modern and
+mobile-friendly websites.
+
+</p>
+
+</div>
+
+
+
+<div class="card">
+
+<div class="icon">
+🎨
+</div>
+
+<h3>
+Creative Design
+</h3>
+
+<p>
+
+Designing clean and
+attractive interfaces.
+
+</p>
+
+</div>
+
+
+
+<div class="card">
+
+<div class="icon">
+🚀
+</div>
+
+<h3>
+Projects
+</h3>
+
+<p>
+
+Building new projects
+while learning coding.
+
+</p>
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+
+<!-- =========================
+     CONTACT
+========================= -->
+
+<section
+class="section contact"
+id="contact">
+
+
+<h2>
+Contact Me
+</h2>
+
+
+<p>
+
+Thanks for visiting
+my website ❤️
+
+</p>
+
+
+<button
+onclick="sayHello()">
+
+Say Hello 👋
+
+</button>
+
+
+</section>
+
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+© 2026 Hajarat —
+My Website
+
+</footer>
+
+
+
+<script>
+
+/* DARK / LIGHT MODE */
+
+function toggleMode(){
+
+    document.body.classList.toggle("light");
+
+}
+
+
+/* CONTACT BUTTON */
+
+function sayHello(){
+
+    alert(
+        "Hello Hajarat! 👋 Thanks for visiting my website."
+    );
+
+}
+
+</script>
+
+
+</body>
+
+</html>
