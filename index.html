@@ -1,901 +1,1787 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="bn">
 <head>
-
 <meta charset="UTF-8">
-
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
-
-<title>Hajarat V5</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+<title>PromptHub V6.3 ⚡</title>
 
 <style>
-
-/* =========================
-   BASIC
-========================= */
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-html{
-    scroll-behavior:smooth;
-}
-
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
 body{
-    font-family:Arial,sans-serif;
-    background:#080808;
-    color:white;
-    transition:0.4s;
+font-family:Arial,sans-serif;
+background:#07090d;color:#fff;
+transition:.3s;
 }
-
-
-/* =========================
-   LIGHT MODE
-========================= */
-
-body.light{
-    background:#f4f4f4;
-    color:#111;
-}
-
-body.light nav{
-    background:rgba(255,255,255,0.95);
-}
-
-body.light nav a{
-    color:#111;
-}
-
-body.light .hero{
-    background:
-    radial-gradient(circle at top,#bcefff,transparent 45%),
-    #f4f4f4;
-}
-
-body.light .hero p{
-    color:#555;
-}
-
-body.light .about-text{
-    color:#555;
-}
-
-body.light .card{
-    background:white;
-    border-color:#ddd;
-}
-
-body.light .card p{
-    color:#555;
-}
-
-body.light .contact{
-    background:#e8e8e8;
-}
-
-body.light footer{
-    background:#ddd;
-}
-
-
-/* =========================
-   NAVBAR
-========================= */
+body.light{background:#f3f5f7;color:#111}
 
 nav{
-    position:fixed;
-
-    top:0;
-    left:0;
-
-    width:100%;
-    height:65px;
-
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-
-    padding:0 20px;
-
-    background:rgba(8,8,8,0.92);
-
-    backdrop-filter:blur(10px);
-
-    z-index:1000;
+position:fixed;top:0;left:0;width:100%;height:62px;
+display:flex;align-items:center;justify-content:space-between;
+padding:0 15px;background:rgba(7,9,13,.94);
+backdrop-filter:blur(12px);
+border-bottom:1px solid #252b33;z-index:1000;
 }
-
-.logo{
-    font-size:22px;
-    font-weight:bold;
-    color:#00e5ff;
+body.light nav{background:rgba(255,255,255,.94);border-color:#ddd}
+.logo{font-size:19px;font-weight:bold;color:#00e5ff}
+.navBtns{display:flex;gap:6px;align-items:center}
+.navBtns button{
+border:0;border-radius:18px;padding:8px 10px;
+background:#171d25;color:#fff;cursor:pointer;font-size:11px
 }
-
-nav a{
-    color:white;
-    text-decoration:none;
-
-    margin-left:12px;
-
-    font-size:13px;
+body.light .navBtns button{background:#e5e8eb;color:#111}
+.mode{
+width:36px!important;height:36px!important;padding:0!important;
+border-radius:50%!important;background:#00e5ff!important;
+color:#001014!important;font-size:17px!important
 }
-
-.mode-btn{
-    margin-left:8px;
-
-    border:none;
-
-    width:38px;
-    height:38px;
-
-    border-radius:50%;
-
-    background:#00e5ff;
-
-    font-size:18px;
-}
-
-
-/* =========================
-   HERO
-========================= */
 
 .hero{
-    min-height:100vh;
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    text-align:center;
-
-    padding:100px 20px 50px;
-
-    background:
-    radial-gradient(circle at 50% 20%,#164653,transparent 45%),
-    #080808;
+min-height:100vh;padding:95px 18px 45px;
+display:flex;align-items:center;justify-content:center;text-align:center;
+background:radial-gradient(circle at 50% 15%,#124650,transparent 46%),#07090d
 }
-
-.hero-content{
-    max-width:700px;
-
-    animation:heroIn 1.3s ease;
+body.light .hero{
+background:radial-gradient(circle at 50% 15%,#bcefff,transparent 46%),#f3f5f7
 }
-
-
-/* PROFILE */
-
+.heroBox{max-width:800px;animation:up .8s ease}
 .profile{
-    width:130px;
-    height:130px;
+width:115px;height:115px;margin:auto auto 22px;border-radius:50%;
+display:flex;align-items:center;justify-content:center;font-size:58px;
+background:#11161d;border:3px solid #00e5ff;
+box-shadow:0 0 35px #00e5ff44
+}
+.hero h1{font-size:45px;margin-bottom:12px}
+.hero h1 span{color:#00e5ff}
+.hero p{color:#aaa;line-height:1.7;font-size:17px}
 
-    border-radius:50%;
+.mainOptions{
+display:grid;grid-template-columns:repeat(2,1fr);
+gap:18px;max-width:700px;margin:32px auto 0
+}
+.mainCard{
+padding:30px 15px;background:#11161d;border:1px solid #29313a;
+border-radius:24px;cursor:pointer;transition:.3s
+}
+body.light .mainCard{background:#fff;border-color:#ddd}
+.mainCard:hover{
+transform:translateY(-7px);border-color:#00e5ff;
+box-shadow:0 10px 30px #00e5ff22
+}
+.mainIcon{font-size:50px;margin-bottom:10px}
+.mainCard p{color:#999;font-size:13px;margin-top:7px}
 
-    margin:auto;
-    margin-bottom:25px;
+.section{padding:78px 15px;text-align:center}
+.hidden{display:none!important}
+.back{
+padding:9px 17px;border:1px solid #00e5ff;border-radius:20px;
+background:transparent;color:#00e5ff;cursor:pointer;margin-bottom:20px
+}
+.section h2{font-size:31px;margin-bottom:22px}
 
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    background:#151515;
-
-    border:3px solid #00e5ff;
-
-    font-size:65px;
-
-    box-shadow:
-    0 0 30px rgba(0,229,255,0.25);
+.gameGrid{
+max-width:1000px;margin:auto;
+display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:18px
+}
+.gameCard{
+overflow:hidden;background:#11161d;border:1px solid #282f38;
+border-radius:20px;text-align:left
+}
+body.light .gameCard{background:#fff;border-color:#ddd}
+.gamePhoto{
+height:180px;display:flex;align-items:center;justify-content:center;
+font-size:75px;background:linear-gradient(135deg,#122f38,#090c11)
+}
+.gameBody{padding:18px}
+.gameBody p{color:#999;line-height:1.6;margin-top:7px}
+.gameBtn{
+width:100%;padding:11px;margin-top:14px;border:0;border-radius:20px;
+background:#00e5ff;font-weight:bold;cursor:pointer
 }
 
-.hero h1{
-    font-size:48px;
+.search{
+width:100%;max-width:850px;padding:15px 20px;border:2px solid #00e5ff;
+border-radius:30px;background:#11161d;color:#fff;outline:none;
+font-size:15px;margin-bottom:15px
+}
+body.light .search{background:#fff;color:#111}
+.categories,.filterBtns{
+display:flex;justify-content:center;flex-wrap:wrap;gap:7px;margin-bottom:20px
+}
+.cat,.filterBtn{
+padding:8px 12px;border:1px solid #00e5ff;border-radius:20px;
+background:transparent;color:#00e5ff;cursor:pointer
+}
+.cat.active,.cat:hover,.filterBtn.active,.filterBtn:hover{
+background:#00e5ff;color:#001014
+}
+.promptGrid{
+max-width:1100px;margin:auto;
+display:grid;grid-template-columns:repeat(auto-fit,minmax(275px,1fr));gap:18px
+}
+.promptCard{
+overflow:hidden;text-align:left;background:#11161d;border:1px solid #282f38;
+border-radius:20px;transition:.3s
+}
+body.light .promptCard{background:#fff;border-color:#ddd}
+.promptCard:hover{transform:translateY(-5px);border-color:#00e5ff}
+.photo{
+height:150px;display:flex;align-items:center;justify-content:center;
+font-size:65px;background:radial-gradient(circle,#15515d,#0b1016 70%)
+}
+.promptBody{padding:17px}
+.badge{
+display:inline-block;font-size:10px;padding:5px 9px;border-radius:15px;
+border:1px solid #00e5ff;color:#00e5ff
+}
+.promptBody h3{font-size:18px;margin:9px 0 5px}
+.shortUse{font-size:13px;color:#00e5ff;line-height:1.5;margin-bottom:11px}
+.promptText{
+padding:11px;border-radius:10px;background:#080b10;color:#aaa;
+font-size:12px;line-height:1.6
+}
+.actions{display:flex;gap:7px;margin-top:12px}
+.actions button{
+flex:1;padding:10px;border:0;border-radius:10px;cursor:pointer;font-weight:bold
+}
+.copy{background:#00e5ff;color:#001014}
+.favorite{background:#292f38;color:#fff}
 
-    margin-bottom:18px;
+.contact{background:#101419}
+body.light .contact{background:#e8ebee}
+.contact p{color:#999;margin-bottom:10px}
+.email{color:#00e5ff;font-weight:bold;text-decoration:none}
+footer{padding:27px;text-align:center;background:#040609;color:#777}
+body.light footer{background:#ddd}
+
+.toast{
+position:fixed;bottom:25px;left:50%;
+transform:translateX(-50%) translateY(80px);
+background:#00e5ff;color:#001014;padding:12px 20px;
+border-radius:25px;font-weight:bold;z-index:5000;opacity:0;transition:.3s
+}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+.modal{
+position:fixed;inset:0;background:#000b;display:none;
+align-items:center;justify-content:center;padding:20px;z-index:3000
+}
+.modal.show{display:flex}
+.modalBox{
+max-width:600px;width:100%;background:#11161d;border:1px solid #00e5ff;
+border-radius:22px;padding:23px
+}
+body.light .modalBox{background:#fff}
+.modalPrompt{
+padding:15px;background:#080b10;border-radius:12px;color:#bbb;
+line-height:1.7;margin:15px 0
+}
+.close{
+width:100%;padding:11px;border:0;border-radius:20px;
+background:#00e5ff;font-weight:bold;cursor:pointer
 }
 
-.hero h1 span{
-    color:#00e5ff;
+/* GAME SCREEN */
+
+#raceGame,#flappyGame{
+position:fixed;inset:0;background:#05070a;z-index:5000;
+display:none;overflow:hidden
+}
+#raceGame.show,#flappyGame.show{display:block}
+
+.gameCanvas{
+position:absolute;left:50%;top:0;transform:translateX(-50%);
+width:100%;height:100%;max-width:520px
 }
 
-.hero p{
-    color:#aaa;
-
-    font-size:18px;
-
-    line-height:1.7;
+.gameTop{
+position:absolute;top:15px;left:50%;transform:translateX(-50%);
+width:calc(100% - 30px);max-width:490px;
+display:flex;justify-content:space-between;z-index:10
+}
+.scoreBox{
+padding:9px 14px;border-radius:18px;background:#0009;
+border:1px solid #ffffff33;font-weight:bold
+}
+.exitBtn{
+border:0;padding:9px 14px;border-radius:18px;
+background:#00e5ff;color:#001014;font-weight:bold
 }
 
-.main-btn{
-    display:inline-block;
-
-    margin-top:30px;
-
-    padding:15px 32px;
-
-    border-radius:30px;
-
-    background:#00e5ff;
-
-    color:#001014;
-
-    text-decoration:none;
-
-    font-weight:bold;
-
-    transition:0.3s;
+.controls{
+position:absolute;bottom:25px;left:50%;transform:translateX(-50%);
+width:100%;max-width:480px;display:flex;
+justify-content:space-between;padding:0 25px;z-index:20
+}
+.controlBtn{
+width:75px;height:75px;border-radius:50%;border:2px solid #00e5ff;
+background:#000b;color:#fff;font-size:32px;
+touch-action:none;user-select:none
 }
 
-.main-btn:hover{
-    transform:scale(1.08);
+.overlay{
+position:absolute;inset:0;display:flex;align-items:center;
+justify-content:center;background:#0008;z-index:30
+}
+.startBox{text-align:center;padding:30px;max-width:420px}
+.startBox h2{font-size:32px;margin-bottom:12px}
+.startBox p{color:#bbb;margin-bottom:20px;line-height:1.6}
+.startBtn{
+border:0;padding:14px 30px;border-radius:25px;
+background:#00e5ff;font-weight:bold;font-size:16px
 }
 
+/* FLAPPY */
 
-/* =========================
-   SECTIONS
-========================= */
-
-.section{
-    padding:85px 20px;
-
-    text-align:center;
+#flappyGame .gameCanvas{
+max-width:520px;
 }
 
-.section h2{
-    font-size:34px;
-
-    margin-bottom:30px;
+.tapHint{
+position:absolute;
+bottom:32%;
+left:50%;
+transform:translateX(-50%);
+color:#fff;
+font-size:18px;
+font-weight:bold;
+text-shadow:0 2px 5px #000;
+z-index:15;
+animation:pulse 1s infinite
 }
 
-.about-text{
-    max-width:650px;
-
-    margin:auto;
-
-    color:#aaa;
-
-    line-height:1.8;
-
-    font-size:17px;
+@keyframes up{
+from{opacity:0;transform:translateY(30px)}
+to{opacity:1;transform:translateY(0)}
 }
-
-
-/* =========================
-   SKILLS
-========================= */
-
-.skills{
-    max-width:700px;
-
-    margin:40px auto 0;
-
-    text-align:left;
+@keyframes pulse{
+50%{opacity:.45;transform:translateX(-50%) scale(1.05)}
 }
-
-.skill{
-    margin-bottom:25px;
-}
-
-.skill-title{
-    display:flex;
-    justify-content:space-between;
-
-    margin-bottom:8px;
-
-    font-size:15px;
-}
-
-.progress{
-    width:100%;
-
-    height:10px;
-
-    background:#242424;
-
-    border-radius:20px;
-
-    overflow:hidden;
-}
-
-.progress span{
-    display:block;
-
-    height:100%;
-
-    width:0;
-
-    background:#00e5ff;
-
-    border-radius:20px;
-
-    animation:progress 1.8s forwards;
-}
-
-.html{
-    --width:90%;
-}
-
-.css{
-    --width:80%;
-}
-
-.js{
-    --width:65%;
-}
-
-.progress span{
-    width:var(--width);
-}
-
-
-/* =========================
-   CARDS
-========================= */
-
-.cards{
-    max-width:1000px;
-
-    margin:auto;
-
-    display:flex;
-
-    justify-content:center;
-
-    gap:20px;
-
-    flex-wrap:wrap;
-}
-
-.card{
-    width:280px;
-
-    padding:30px 20px;
-
-    background:#151515;
-
-    border:1px solid #292929;
-
-    border-radius:20px;
-
-    transition:0.35s;
-
-    opacity:0;
-
-    animation:cardIn 1s forwards;
-}
-
-.card:nth-child(2){
-    animation-delay:0.2s;
-}
-
-.card:nth-child(3){
-    animation-delay:0.4s;
-}
-
-.card:hover{
-    transform:translateY(-10px);
-
-    border-color:#00e5ff;
-}
-
-.icon{
-    font-size:45px;
-
-    margin-bottom:15px;
-}
-
-.card h3{
-    margin-bottom:12px;
-}
-
-.card p{
-    color:#999;
-
-    line-height:1.6;
-}
-
-
-/* =========================
-   CONTACT
-========================= */
-
-.contact{
-    background:#101010;
-}
-
-.contact p{
-    color:#999;
-
-    margin-bottom:25px;
-}
-
-.contact button{
-    padding:14px 30px;
-
-    border:none;
-
-    border-radius:30px;
-
-    background:#00e5ff;
-
-    font-size:16px;
-
-    font-weight:bold;
-
-    cursor:pointer;
-}
-
-
-/* =========================
-   FOOTER
-========================= */
-
-footer{
-    padding:28px;
-
-    text-align:center;
-
-    background:#050505;
-
-    color:#777;
-}
-
-
-/* =========================
-   ANIMATIONS
-========================= */
-
-@keyframes heroIn{
-
-    from{
-        opacity:0;
-        transform:translateY(40px);
-    }
-
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
-
-}
-
-@keyframes cardIn{
-
-    from{
-        opacity:0;
-        transform:translateY(30px);
-    }
-
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
-
-}
-
-@keyframes progress{
-
-    from{
-        width:0;
-    }
-
-}
-
-
-/* =========================
-   MOBILE
-========================= */
 
 @media(max-width:600px){
-
-    nav{
-        padding:0 12px;
-    }
-
-    .logo{
-        font-size:18px;
-    }
-
-    nav a{
-        font-size:11px;
-        margin-left:5px;
-    }
-
-    .hero h1{
-        font-size:36px;
-    }
-
-    .hero p{
-        font-size:16px;
-    }
-
-    .profile{
-        width:110px;
-        height:110px;
-        font-size:55px;
-    }
-
-    .card{
-        width:100%;
-        max-width:330px;
-    }
-
-    .section{
-        padding:65px 18px;
-    }
-
+.mainOptions{grid-template-columns:1fr}
+.hero h1{font-size:34px}
+.logo{font-size:16px}
+.navBtns button{font-size:10px;padding:7px 8px}
+.section{padding:70px 12px}
+.controlBtn{width:68px;height:68px}
 }
-
 </style>
-
 </head>
-
 
 <body>
 
-
-<!-- =========================
-     NAVBAR
-========================= -->
-
 <nav>
-
-<div class="logo">
-HAJARAT
+<div class="logo">PromptHub V6.3 ⚡</div>
+<div class="navBtns">
+<button onclick="showHome()">Home</button>
+<button onclick="openAI()">AI</button>
+<button onclick="openGames()">Game</button>
+<button class="mode" onclick="toggleMode()">🌙</button>
 </div>
-
-<div>
-
-<a href="#home">Home</a>
-
-<a href="#about">About</a>
-
-<a href="#skills">Skills</a>
-
-<a href="#contact">Contact</a>
-
-<button
-class="mode-btn"
-onclick="toggleMode()">
-
-🌙
-
-</button>
-
-</div>
-
 </nav>
 
 
+<!-- HOME -->
 
-<!-- =========================
-     HOME
-========================= -->
+<section class="hero" id="home">
+<div class="heroBox">
 
-<section
-class="hero"
-id="home">
+<div class="profile">🤖</div>
 
-<div class="hero-content">
+<h1>Welcome to <span>PromptHub</span></h1>
 
+<p>AI Prompts & Games — সব এক জায়গায়।</p>
 
-<div class="profile">
-👨‍💻
+<div class="mainOptions">
+
+<div class="mainCard" onclick="openGames()">
+<div class="mainIcon">🎮</div>
+<h2>GAME</h2>
+<p>Play & explore games</p>
 </div>
 
-
-<h1>
-
-Hello, I'm
-<span>Hajarat</span>
-👋
-
-</h1>
-
-
-<p>
-
-Welcome to my personal website.
-
-I'm learning web development,
-design and programming.
-
-</p>
-
-
-<a
-href="#about"
-class="main-btn">
-
-Explore My Website
-
-</a>
-
-
+<div class="mainCard" onclick="openAI()">
+<div class="mainIcon">🤖</div>
+<h2>AI PROMPT</h2>
+<p>Find useful AI prompts</p>
 </div>
 
+</div>
+</div>
 </section>
 
 
+<!-- GAMES -->
 
-<!-- =========================
-     ABOUT
-========================= -->
+<section class="section hidden" id="games">
 
-<section
-class="section"
-id="about">
+<button class="back" onclick="showHome()">← Back</button>
 
+<h2>🎮 GAME ZONE</h2>
 
-<h2>
-About Me
-</h2>
+<div class="gameGrid">
 
+<div class="gameCard">
 
-<p class="about-text">
+<div class="gamePhoto">🏎️</div>
 
-Hi! I'm Hajarat.
+<div class="gameBody">
+<h3>Street Racing</h3>
 
-I'm learning how websites and
-applications are created.
-
-I enjoy coding, designing and
-building new projects.
-
-My goal is to keep learning
-and create useful digital
-projects.
-
+<p>
+High graphics racing game. Traffic dodge করো এবং যত বেশি score পারো করো।
 </p>
 
+<button class="gameBtn" onclick="startRace()">
+▶ PLAY
+</button>
+</div>
+</div>
 
+
+<div class="gameCard">
+
+<div class="gamePhoto">🐦</div>
+
+<div class="gameBody">
+<h3>Flappy Bird</h3>
+
+<p>
+Tap করে bird-কে উড়াও এবং pipes এড়িয়ে high score করো।
+</p>
+
+<button class="gameBtn" onclick="startFlappy()">
+▶ PLAY
+</button>
+</div>
+</div>
+
+
+<div class="gameCard">
+
+<div class="gamePhoto">🎮</div>
+
+<div class="gameBody">
+<h3>More Games</h3>
+
+<p>আরও নতুন game শীঘ্রই যোগ করা হবে।</p>
+
+<button class="gameBtn" onclick="comingSoon()">
+COMING SOON
+</button>
+</div>
+</div>
+
+</div>
 </section>
 
 
+<!-- AI -->
 
-<!-- =========================
-     SKILLS
-========================= -->
+<section class="section hidden" id="ai">
 
-<section
-class="section"
-id="skills">
+<button class="back" onclick="showHome()">← Back</button>
 
+<h2>🤖 AI PROMPTS</h2>
 
-<h2>
-My Skills
-</h2>
+<input id="search" class="search"
+placeholder="🔎 Search prompt..."
+oninput="render()">
 
+<div class="filterBtns">
 
-<div class="skills">
-
-
-<div class="skill">
-
-<div class="skill-title">
-
-<span>HTML</span>
-
-<span>90%</span>
-
-</div>
-
-<div class="progress">
-
-<span class="html"></span>
-
-</div>
-
-</div>
-
-
-
-<div class="skill">
-
-<div class="skill-title">
-
-<span>CSS</span>
-
-<span>80%</span>
-
-</div>
-
-<div class="progress">
-
-<span class="css"></span>
-
-</div>
-
-</div>
-
-
-
-<div class="skill">
-
-<div class="skill-title">
-
-<span>JavaScript</span>
-
-<span>65%</span>
-
-</div>
-
-<div class="progress">
-
-<span class="js"></span>
-
-</div>
-
-</div>
-
-
-</div>
-
-
-</section>
-
-
-
-<!-- =========================
-     SERVICES
-========================= -->
-
-<section
-class="section">
-
-
-<h2>
-What I Do
-</h2>
-
-
-<div class="cards">
-
-
-<div class="card">
-
-<div class="icon">
-💻
-</div>
-
-<h3>
-Web Development
-</h3>
-
-<p>
-
-Creating modern and
-mobile-friendly websites.
-
-</p>
-
-</div>
-
-
-
-<div class="card">
-
-<div class="icon">
-🎨
-</div>
-
-<h3>
-Creative Design
-</h3>
-
-<p>
-
-Designing clean and
-attractive interfaces.
-
-</p>
-
-</div>
-
-
-
-<div class="card">
-
-<div class="icon">
-🚀
-</div>
-
-<h3>
-Projects
-</h3>
-
-<p>
-
-Building new projects
-while learning coding.
-
-</p>
-
-</div>
-
-
-</div>
-
-
-</section>
-
-
-
-<!-- =========================
-     CONTACT
-========================= -->
-
-<section
-class="section contact"
-id="contact">
-
-
-<h2>
-Contact Me
-</h2>
-
-
-<p>
-
-Thanks for visiting
-my website ❤️
-
-</p>
-
-
-<button
-onclick="sayHello()">
-
-Say Hello 👋
-
+<button class="filterBtn active" onclick="setFilter('all',this)">
+🔥 All
 </button>
 
+<button class="filterBtn" onclick="setFilter('new',this)">
+🆕 New
+</button>
+
+<button class="filterBtn" onclick="setFilter('popular',this)">
+🔥 Popular
+</button>
+
+<button class="filterBtn" onclick="setFilter('favorite',this)">
+❤️ Favorites
+</button>
+
+</div>
+
+<div class="categories">
+
+<button class="cat active" onclick="setCategory('All',this)">All</button>
+<button class="cat" onclick="setCategory('Study',this)">📚 Study</button>
+<button class="cat" onclick="setCategory('Coding',this)">💻 Coding</button>
+<button class="cat" onclick="setCategory('YouTube',this)">🎬 YouTube</button>
+<button class="cat" onclick="setCategory('Instagram',this)">📸 Instagram</button>
+<button class="cat" onclick="setCategory('Image',this)">🎨 Image</button>
+<button class="cat" onclick="setCategory('Business',this)">💼 Business</button>
+<button class="cat" onclick="setCategory('Gaming',this)">🎮 Gaming</button>
+
+</div>
+
+<div class="promptGrid" id="promptGrid"></div>
 
 </section>
 
 
+<!-- CONTACT -->
 
-<!-- =========================
-     FOOTER
-========================= -->
+<section class="section contact">
+
+<h2>📧 Contact</h2>
+<p>Website related contact:</p>
+<a class="email" href="mailto:editfacts6@gmail.com">
+editfacts6@gmail.com
+</a>
+
+</section>
 
 <footer>
-
-© 2026 Hajarat —
-My Website
-
+© 2026 PromptHub V6.3 ⚡
 </footer>
 
+
+<!-- MODAL -->
+
+<div class="modal" id="modal">
+<div class="modalBox">
+<h2 id="modalTitle"></h2>
+<p id="modalUse"></p>
+<div class="modalPrompt" id="modalPrompt"></div>
+<button class="close" onclick="closeModal()">Close</button>
+</div>
+</div>
+
+<div class="toast" id="toast">Copied ✓</div>
+
+
+<!-- =========================
+     STREET RACING
+========================= -->
+
+<div id="raceGame">
+
+<canvas id="raceCanvas" class="gameCanvas"></canvas>
+
+<div class="gameTop">
+<div class="scoreBox">
+🏁 Score: <span id="raceScore">0</span>
+</div>
+
+<button class="exitBtn" onclick="exitRace()">✕ Exit</button>
+</div>
+
+<div class="controls">
+<button class="controlBtn" id="leftBtn">◀</button>
+<button class="controlBtn" id="rightBtn">▶</button>
+</div>
+
+<div class="overlay" id="raceStart">
+
+<div class="startBox">
+
+<h2>🏎️ Street Racing</h2>
+
+<p>
+Traffic cars এড়িয়ে যতক্ষণ পারো drive করো!
+Score বাড়ার সাথে speed-ও বাড়বে।
+</p>
+
+<button class="startBtn" onclick="beginRace()">
+START RACE
+</button>
+
+</div>
+</div>
+</div>
+
+
+<!-- =========================
+     FLAPPY BIRD
+========================= -->
+
+<div id="flappyGame">
+
+<canvas id="flappyCanvas" class="gameCanvas"></canvas>
+
+<div class="gameTop">
+
+<div class="scoreBox">
+🐦 Score: <span id="flappyScore">0</span>
+</div>
+
+<button class="exitBtn" onclick="exitFlappy()">
+✕ Exit
+</button>
+
+</div>
+
+<div class="tapHint" id="tapHint">
+👆 TAP TO FLY
+</div>
+
+<div class="overlay" id="flappyStart">
+
+<div class="startBox">
+
+<h2>🐦 Flappy Bird</h2>
+
+<p>
+Screen-এ tap করে bird-কে উড়াও।
+Pipes-এ ধাক্কা লাগলে game over!
+</p>
+
+<button class="startBtn" onclick="beginFlappy()">
+START GAME
+</button>
+
+</div>
+</div>
+
+</div>
 
 
 <script>
 
-/* DARK / LIGHT MODE */
+/* =========================
+   WEBSITE
+========================= */
+
+const prompts=[
+
+["Realistic Portrait","Image","🧑",
+"Realistic মানুষের ছবি বানানোর জন্য",
+"Create a highly detailed realistic portrait of [subject], natural lighting, realistic skin texture, cinematic composition.","popular"],
+
+["Cinematic Image","Image","🎬",
+"Cinematic ছবি বানানোর জন্য",
+"Create a cinematic image of [subject] with dramatic lighting, detailed environment and professional composition.","popular"],
+
+["Anime Image","Image","🌸",
+"Anime style ছবি বানানোর জন্য",
+"Create a beautiful anime-style image of [subject] with detailed background and expressive lighting.","new"],
+
+["Study Planner","Study","📚",
+"পড়াশোনার routine বানানোর জন্য",
+"Create a realistic daily study schedule for [subjects] based on [hours] available each day.","popular"],
+
+["Exam Preparation","Study","📝",
+"Exam-এর প্রস্তুতি নেওয়ার জন্য",
+"Create a step-by-step exam preparation plan for [subject].","popular"],
+
+["Simple Explanation","Study","📖",
+"কঠিন বিষয় সহজে বোঝার জন্য",
+"Explain [topic] in very simple language with examples and a short summary.","popular"],
+
+["Practice Questions","Study","❓",
+"Practice question বানানোর জন্য",
+"Create 20 practice questions about [topic] with answers.","new"],
+
+["Code Explainer","Coding","💻",
+"Code বুঝতে",
+"Explain this code line by line in beginner-friendly language: [code].","popular"],
+
+["Code Debugger","Coding","🐞",
+"Code-এর error ঠিক করতে",
+"Find the bugs in this code, explain them and provide a corrected version: [code].","popular"],
+
+["HTML Website","Coding","🌐",
+"Website বানাতে",
+"Create a responsive modern HTML website for [idea].","popular"],
+
+["JavaScript Helper","Coding","⚙️",
+"JavaScript feature বানাতে",
+"Write JavaScript for this feature: [feature].","new"],
+
+["YouTube Ideas","YouTube","🎬",
+"YouTube video idea পেতে",
+"Give me 20 YouTube video ideas for [niche] with titles and descriptions.","popular"],
+
+["YouTube Script","YouTube","🎥",
+"Video script বানাতে",
+"Write a complete YouTube script about [topic] with a strong opening and conclusion.","popular"],
+
+["Video Hooks","YouTube","🪝",
+"Video opening বানাতে",
+"Generate 20 interesting hooks for a YouTube video about [topic].","new"],
+
+["Instagram Bio","Instagram","📸",
+"Instagram bio বানাতে",
+"Create 15 short Instagram bio ideas for [niche].","popular"],
+
+["Reel Ideas","Instagram","🎞️",
+"Reel idea পেতে",
+"Give me 20 Instagram Reel ideas for [niche].","popular"],
+
+["Instagram Caption","Instagram","✍️",
+"Instagram caption লিখতে",
+"Write 15 captions for an Instagram post about [topic].","new"],
+
+["Business Ideas","Business","💼",
+"Business idea পেতে",
+"Give me 20 beginner-friendly business ideas based on [skills/interests].","popular"],
+
+["Business Plan","Business","📊",
+"Business plan বানাতে",
+"Create a simple business plan for [idea].","new"],
+
+["Brand Names","Business","🏷️",
+"Brand name পেতে",
+"Generate 30 memorable brand names for [business].","popular"],
+
+["Game Ideas","Gaming","🎮",
+"Game idea পেতে",
+"Give me 20 unique beginner-friendly mobile game ideas.","popular"],
+
+["Racing Game","Gaming","🏎️",
+"Racing game design করতে",
+"Design a mobile racing game with cars, tracks, controls and game modes.","popular"],
+
+["Game Story","Gaming","📖",
+"Game story বানাতে",
+"Create a story for a game about [idea] with characters and missions.","new"],
+
+["Game Levels","Gaming","🗺️",
+"Game level বানাতে",
+"Create 10 level ideas for a [genre] game.","new"]
+
+];
+
+let category="All";
+let filter="all";
+
+let favorites=
+JSON.parse(localStorage.getItem("phFavorites")||"[]");
+
+function hideAll(){
+document.getElementById("home").classList.add("hidden");
+document.getElementById("ai").classList.add("hidden");
+document.getElementById("games").classList.add("hidden");
+}
+
+function showHome(){
+hideAll();
+document.getElementById("home").classList.remove("hidden");
+window.scrollTo(0,0);
+}
+
+function openAI(){
+hideAll();
+document.getElementById("ai").classList.remove("hidden");
+window.scrollTo(0,0);
+render();
+}
+
+function openGames(){
+hideAll();
+document.getElementById("games").classList.remove("hidden");
+window.scrollTo(0,0);
+}
+
+function setCategory(cat,btn){
+category=cat;
+document.querySelectorAll(".cat")
+.forEach(x=>x.classList.remove("active"));
+btn.classList.add("active");
+render();
+}
+
+function setFilter(type,btn){
+filter=type;
+document.querySelectorAll(".filterBtn")
+.forEach(x=>x.classList.remove("active"));
+btn.classList.add("active");
+render();
+}
+
+function render(){
+
+const grid=document.getElementById("promptGrid");
+const search=document.getElementById("search").value.toLowerCase().trim();
+
+grid.innerHTML="";
+
+prompts.forEach((p,index)=>{
+
+const categoryMatch=category==="All"||p[1]===category;
+const searchMatch=p.join(" ").toLowerCase().includes(search);
+
+let filterMatch=true;
+
+if(filter==="new")filterMatch=p[5]==="new";
+if(filter==="popular")filterMatch=p[5]==="popular";
+if(filter==="favorite")filterMatch=favorites.includes(index);
+
+if(!categoryMatch||!searchMatch||!filterMatch)return;
+
+const saved=favorites.includes(index);
+
+const card=document.createElement("div");
+
+card.className="promptCard";
+
+card.innerHTML=`
+<div class="photo">${p[2]}</div>
+
+<div class="promptBody">
+
+<span class="badge">${p[1]}</span>
+
+<h3>${p[0]}</h3>
+
+<div class="shortUse">👉 ${p[3]}</div>
+
+<div class="promptText">${p[4]}</div>
+
+<div class="actions">
+
+<button class="copy" onclick="copyPrompt(${index})">
+📋 Copy
+</button>
+
+<button class="favorite" onclick="toggleFavorite(${index})">
+${saved?"❤️ Saved":"🤍 Favorite"}
+</button>
+
+</div>
+
+<div class="actions">
+
+<button onclick="showDetails(${index})">
+👁️ Details
+</button>
+
+<button onclick="sharePrompt(${index})">
+🔗 Share
+</button>
+
+</div>
+
+</div>
+`;
+
+grid.appendChild(card);
+
+});
+}
+
+function copyPrompt(index){
+
+const text=prompts[index][4];
+
+if(navigator.clipboard){
+
+navigator.clipboard.writeText(text)
+.then(()=>showToast("Copied ✓"))
+.catch(()=>fallbackCopy(text));
+
+}else fallbackCopy(text);
+
+}
+
+function fallbackCopy(text){
+
+const area=document.createElement("textarea");
+
+area.value=text;
+
+document.body.appendChild(area);
+
+area.select();
+
+document.execCommand("copy");
+
+area.remove();
+
+showToast("Copied ✓");
+
+}
+
+function toggleFavorite(index){
+
+if(favorites.includes(index))
+favorites=favorites.filter(x=>x!==index);
+else favorites.push(index);
+
+localStorage.setItem(
+"phFavorites",
+JSON.stringify(favorites)
+);
+
+render();
+
+}
+
+function showDetails(index){
+
+const p=prompts[index];
+
+document.getElementById("modalTitle").textContent=p[2]+" "+p[0];
+
+document.getElementById("modalUse").textContent="👉 "+p[3];
+
+document.getElementById("modalPrompt").textContent=p[4];
+
+document.getElementById("modal").classList.add("show");
+
+}
+
+function closeModal(){
+document.getElementById("modal").classList.remove("show");
+}
+
+function sharePrompt(index){
+
+const p=prompts[index];
+
+const text=p[0]+"\n\n"+p[3]+"\n\n"+p[4];
+
+if(navigator.share){
+
+navigator.share({
+title:p[0],
+text:text
+}).catch(()=>{});
+
+}else copyPrompt(index);
+
+}
+
+function showToast(text){
+
+const toast=document.getElementById("toast");
+
+toast.textContent=text;
+toast.classList.add("show");
+
+setTimeout(()=>{
+toast.classList.remove("show");
+},1800);
+
+}
 
 function toggleMode(){
+document.body.classList.toggle("light");
+}
 
-    document.body.classList.toggle("light");
+function comingSoon(){
+showToast("Coming soon 🎮");
+}
+
+
+/* =====================================================
+   STREET RACING — HIGH GRAPHICS
+===================================================== */
+
+const raceCanvas=document.getElementById("raceCanvas");
+const rctx=raceCanvas.getContext("2d");
+
+let RW=400,RH=700;
+let racePlayer;
+let raceEnemies=[];
+let raceRunning=false;
+let raceAnimation;
+let raceScore=0;
+let raceSpeed=5;
+let roadOffset=0;
+let spawnTimer=0;
+let leftPressed=false;
+let rightPressed=false;
+
+function resizeRace(){
+
+const dpr=Math.min(window.devicePixelRatio||1,2);
+
+RW=Math.min(window.innerWidth,520);
+RH=window.innerHeight;
+
+raceCanvas.width=RW*dpr;
+raceCanvas.height=RH*dpr;
+
+raceCanvas.style.width=RW+"px";
+raceCanvas.style.height=RH+"px";
+
+rctx.setTransform(dpr,0,0,dpr,0,0);
+
+}
+
+function startRace(){
+
+document.getElementById("raceGame").classList.add("show");
+
+resizeRace();
+
+document.getElementById("raceStart").style.display="flex";
+
+}
+
+function beginRace(){
+
+resizeRace();
+
+racePlayer={
+x:RW/2-25,
+y:RH-155,
+w:50,
+h:88,
+speed:7
+};
+
+raceEnemies=[];
+raceScore=0;
+raceSpeed=5;
+roadOffset=0;
+spawnTimer=0;
+raceRunning=true;
+
+document.getElementById("raceScore").textContent="0";
+
+document.getElementById("raceStart").style.display="none";
+
+cancelAnimationFrame(raceAnimation);
+
+raceLoop();
+
+}
+
+function exitRace(){
+
+raceRunning=false;
+
+cancelAnimationFrame(raceAnimation);
+
+document.getElementById("raceGame").classList.remove("show");
+
+}
+
+function raceRoundRect(ctx,x,y,w,h,r){
+
+ctx.beginPath();
+ctx.moveTo(x+r,y);
+ctx.lineTo(x+w-r,y);
+ctx.quadraticCurveTo(x+w,y,x+w,y+r);
+ctx.lineTo(x+w,y+h-r);
+ctx.quadraticCurveTo(x+w,y+h,x+w-r,y+h);
+ctx.lineTo(x+r,y+h);
+ctx.quadraticCurveTo(x,y+h,x,y+h-r);
+ctx.lineTo(x,y+r);
+ctx.quadraticCurveTo(x,y,x+r,y);
+ctx.closePath();
+ctx.fill();
+
+}
+
+function drawRaceRoad(){
+
+rctx.fillStyle="#45a95a";
+rctx.fillRect(0,0,RW,RH);
+
+const roadW=RW*.72;
+const roadX=(RW-roadW)/2;
+
+rctx.fillStyle="#292c32";
+rctx.fillRect(roadX,0,roadW,RH);
+
+/* road texture */
+
+for(let y=-40;y<RH;y+=45){
+
+rctx.fillStyle="#34373d";
+
+rctx.fillRect(
+roadX+10,
+y+(roadOffset*.4%45),
+roadW-20,
+2
+);
+
+}
+
+/* road edges */
+
+rctx.fillStyle="#fff";
+rctx.fillRect(roadX,0,5,RH);
+rctx.fillRect(roadX+roadW-5,0,5,RH);
+
+/* center */
+
+rctx.fillStyle="#f5f5f5";
+
+const lineH=50;
+const gap=35;
+
+for(
+let y=-lineH+(roadOffset%(lineH+gap));
+y<RH;
+y+=lineH+gap
+){
+
+rctx.fillRect(
+RW/2-4,
+y,
+8,
+lineH
+);
+
+}
+
+/* roadside objects */
+
+for(
+let y=-80+(roadOffset*1.1%120);
+y<RH;
+y+=120
+){
+
+rctx.fillStyle="#72502e";
+rctx.fillRect(roadX-25,y+15,7,35);
+
+rctx.fillStyle="#176f36";
+
+rctx.beginPath();
+rctx.arc(roadX-21,y+10,20,0,Math.PI*2);
+rctx.fill();
+
+rctx.fillStyle="#72502e";
+rctx.fillRect(roadX+roadW+18,y+15,7,35);
+
+rctx.fillStyle="#176f36";
+
+rctx.beginPath();
+rctx.arc(roadX+roadW+22,y+10,20,0,Math.PI*2);
+rctx.fill();
+
+}
+
+}
+
+function drawCar(x,y,w,h,color,player=false){
+
+/* shadow */
+
+rctx.fillStyle="#0007";
+
+rctx.beginPath();
+
+rctx.ellipse(
+x+w/2,y+h-2,w*.6,8,0,0,Math.PI*2
+);
+
+rctx.fill();
+
+/* wheels */
+
+rctx.fillStyle="#101010";
+
+rctx.fillRect(x-5,y+15,8,25);
+rctx.fillRect(x+w-3,y+15,8,25);
+rctx.fillRect(x-5,y+h-40,8,25);
+rctx.fillRect(x+w-3,y+h-40,8,25);
+
+/* body */
+
+rctx.fillStyle=color;
+raceRoundRect(rctx,x,y,w,h,10);
+
+/* body highlight */
+
+rctx.fillStyle="rgba(255,255,255,.18)";
+raceRoundRect(rctx,x+5,y+5,w-10,8,4);
+
+/* windshield */
+
+rctx.fillStyle="#132936";
+raceRoundRect(rctx,x+8,y+17,w-16,26,6);
+
+/* windshield shine */
+
+rctx.fillStyle="rgba(255,255,255,.2)";
+rctx.fillRect(x+12,y+20,w-25,4);
+
+/* rear glass */
+
+rctx.fillStyle="#1e3e4d";
+raceRoundRect(rctx,x+9,y+h-38,w-18,22,5);
+
+/* lights */
+
+rctx.fillStyle=player?"#fff":"#ffdf4b";
+
+rctx.fillRect(x+7,y+5,11,7);
+rctx.fillRect(x+w-18,y+5,11,7);
+
+}
+
+function spawnRaceEnemy(){
+
+const roadW=RW*.72;
+const roadX=(RW-roadW)/2;
+const laneW=roadW/3;
+const lane=Math.floor(Math.random()*3);
+
+const colors=[
+"#287be8",
+"#f19a27",
+"#9c42d7",
+"#24b76c",
+"#e33d62"
+];
+
+raceEnemies.push({
+x:roadX+lane*laneW+laneW/2-22,
+y:-110,
+w:44,
+h:78,
+speed:raceSpeed+Math.random()*2,
+color:colors[Math.floor(Math.random()*colors.length)]
+});
+
+}
+
+function raceCollision(a,b){
+
+return(
+a.x+8<b.x+b.w-7 &&
+a.x+a.w-8>b.x+7 &&
+a.y+9<b.y+b.h-7 &&
+a.y+a.h-9>b.y+7
+);
+
+}
+
+function raceGameOver(){
+
+raceRunning=false;
+
+setTimeout(()=>{
+
+alert("🏁 Game Over!\n\nScore: "+raceScore);
+
+},80);
+
+}
+
+function raceLoop(){
+
+if(!raceRunning)return;
+
+drawRaceRoad();
+
+roadOffset+=raceSpeed;
+
+if(leftPressed)
+racePlayer.x-=racePlayer.speed;
+
+if(rightPressed)
+racePlayer.x+=racePlayer.speed;
+
+const roadW=RW*.72;
+const roadX=(RW-roadW)/2;
+
+if(racePlayer.x<roadX+10)
+racePlayer.x=roadX+10;
+
+if(racePlayer.x+racePlayer.w>
+roadX+roadW-10)
+racePlayer.x=roadX+roadW-racePlayer.w-10;
+
+spawnTimer++;
+
+if(spawnTimer>Math.max(34,75-raceSpeed*4)){
+
+spawnRaceEnemy();
+
+spawnTimer=0;
+
+}
+
+for(let i=raceEnemies.length-1;i>=0;i--){
+
+const e=raceEnemies[i];
+
+e.y+=e.speed;
+
+drawCar(e.x,e.y,e.w,e.h,e.color);
+
+if(raceCollision(racePlayer,e)){
+
+raceGameOver();
+return;
+
+}
+
+if(e.y>RH+100){
+
+raceEnemies.splice(i,1);
+
+raceScore++;
+
+document.getElementById("raceScore")
+.textContent=raceScore;
+
+if(raceScore%10===0)
+raceSpeed+=.4;
+
+}
+
+}
+
+drawCar(
+racePlayer.x,
+racePlayer.y,
+racePlayer.w,
+racePlayer.h,
+"#e52c38",
+true
+);
+
+raceAnimation=requestAnimationFrame(raceLoop);
 
 }
 
 
-/* CONTACT BUTTON */
+/* RACING CONTROLS */
 
-function sayHello(){
+document.getElementById("leftBtn")
+.addEventListener("pointerdown",e=>{
+e.preventDefault();
+leftPressed=true;
+});
 
-    alert(
-        "Hello Hajarat! 👋 Thanks for visiting my website."
-    );
+document.getElementById("leftBtn")
+.addEventListener("pointerup",()=>{
+leftPressed=false;
+});
+
+document.getElementById("leftBtn")
+.addEventListener("pointercancel",()=>{
+leftPressed=false;
+});
+
+document.getElementById("rightBtn")
+.addEventListener("pointerdown",e=>{
+e.preventDefault();
+rightPressed=true;
+});
+
+document.getElementById("rightBtn")
+.addEventListener("pointerup",()=>{
+rightPressed=false;
+});
+
+document.getElementById("rightBtn")
+.addEventListener("pointercancel",()=>{
+rightPressed=false;
+});
+
+document.addEventListener("keydown",e=>{
+if(e.key==="ArrowLeft")leftPressed=true;
+if(e.key==="ArrowRight")rightPressed=true;
+});
+
+document.addEventListener("keyup",e=>{
+if(e.key==="ArrowLeft")leftPressed=false;
+if(e.key==="ArrowRight")rightPressed=false;
+});
+
+window.addEventListener("resize",()=>{
+if(raceRunning)resizeRace();
+});
+
+
+/* =====================================================
+   FLAPPY BIRD — HIGH GRAPHICS
+===================================================== */
+
+const flappyCanvas=document.getElementById("flappyCanvas");
+const fctx=flappyCanvas.getContext("2d");
+
+let FW=400,FH=700;
+let bird;
+let pipes=[];
+let flappyRunning=false;
+let flappyAnimation;
+let flappyScore=0;
+let flappySpeed=3.2;
+let pipeTimer=0;
+let clouds=[];
+
+function resizeFlappy(){
+
+const dpr=Math.min(window.devicePixelRatio||1,2);
+
+FW=Math.min(window.innerWidth,520);
+FH=window.innerHeight;
+
+flappyCanvas.width=FW*dpr;
+flappyCanvas.height=FH*dpr;
+
+flappyCanvas.style.width=FW+"px";
+flappyCanvas.style.height=FH+"px";
+
+fctx.setTransform(dpr,0,0,dpr,0,0);
 
 }
+
+function startFlappy(){
+
+document.getElementById("flappyGame")
+.classList.add("show");
+
+resizeFlappy();
+
+document.getElementById("flappyStart")
+.style.display="flex";
+
+}
+
+function beginFlappy(){
+
+resizeFlappy();
+
+bird={
+x:FW*.25,
+y:FH*.45,
+radius:18,
+velocity:0
+};
+
+pipes=[];
+flappyScore=0;
+flappySpeed=3.2;
+pipeTimer=0;
+flappyRunning=true;
+
+document.getElementById("flappyScore")
+.textContent="0";
+
+document.getElementById("flappyStart")
+.style.display="none";
+
+document.getElementById("tapHint")
+.style.display="block";
+
+clouds=[];
+
+for(let i=0;i<7;i++){
+
+clouds.push({
+x:Math.random()*FW,
+y:50+Math.random()*(FH*.4),
+w:60+Math.random()*70,
+speed:.25+Math.random()*.35
+});
+
+}
+
+cancelAnimationFrame(flappyAnimation);
+
+flappyLoop();
+
+}
+
+function exitFlappy(){
+
+flappyRunning=false;
+
+cancelAnimationFrame(flappyAnimation);
+
+document.getElementById("flappyGame")
+.classList.remove("show");
+
+}
+
+function flap(){
+
+if(!flappyRunning)return;
+
+bird.velocity=-7.5;
+
+document.getElementById("tapHint")
+.style.display="none";
+
+}
+
+flappyCanvas.addEventListener("pointerdown",e=>{
+e.preventDefault();
+flap();
+});
+
+function drawCloud(c){
+
+fctx.fillStyle="rgba(255,255,255,.78)";
+
+fctx.beginPath();
+
+fctx.arc(c.x,c.y,18,0,Math.PI*2);
+
+fctx.arc(c.x+20,c.y-10,24,0,Math.PI*2);
+
+fctx.arc(c.x+45,c.y,18,0,Math.PI*2);
+
+fctx.arc(c.x+25,c.y+7,22,0,Math.PI*2);
+
+fctx.fill();
+
+}
+
+function drawFlappyBackground(){
+
+/* sky gradient */
+
+const gradient=fctx.createLinearGradient(0,0,0,FH);
+
+gradient.addColorStop(0,"#45c9ff");
+gradient.addColorStop(.65,"#b7ecff");
+gradient.addColorStop(1,"#eaffd0");
+
+fctx.fillStyle=gradient;
+
+fctx.fillRect(0,0,FW,FH);
+
+/* clouds */
+
+for(const c of clouds){
+
+c.x-=c.speed;
+
+if(c.x+c.w<0)
+c.x=FW+20;
+
+drawCloud(c);
+
+}
+
+/* distant hills */
+
+fctx.fillStyle="#7ccf70";
+
+fctx.beginPath();
+
+fctx.moveTo(0,FH-115);
+
+for(let x=0;x<=FW;x+=50){
+
+fctx.quadraticCurveTo(
+x+25,
+FH-165-Math.sin(x)*10,
+x+50,
+FH-115
+);
+
+}
+
+fctx.lineTo(FW,FH);
+fctx.lineTo(0,FH);
+fctx.fill();
+
+/* ground */
+
+fctx.fillStyle="#d6b65b";
+fctx.fillRect(0,FH-75,FW,75);
+
+fctx.fillStyle="#6fc94f";
+fctx.fillRect(0,FH-82,FW,10);
+
+}
+
+function drawPipe(x,y,w,h,top){
+
+/* shadow */
+
+fctx.fillStyle="#0002";
+fctx.fillRect(x+5,y,w,h);
+
+/* pipe body gradient */
+
+const g=fctx.createLinearGradient(x,0,x+w,0);
+
+g.addColorStop(0,"#178e3d");
+g.addColorStop(.35,"#52d85d");
+g.addColorStop(.7,"#29b94b");
+g.addColorStop(1,"#096e2e");
+
+fctx.fillStyle=g;
+
+fctx.fillRect(x,y,w,h);
+
+/* pipe cap */
+
+const capH=25;
+
+fctx.fillStyle="#43ca52";
+
+if(top){
+
+fctx.fillRect(x-5,y+h-capH,w+10,capH);
+
+fctx.fillStyle="#168837";
+fctx.fillRect(x-5,y+h-capH,w+10,5);
+
+}else{
+
+fctx.fillRect(x-5,y,w+10,capH);
+
+fctx.fillStyle="#168837";
+fctx.fillRect(x-5,y,w+10,5);
+
+}
+
+/* highlight */
+
+fctx.fillStyle="rgba(255,255,255,.22)";
+fctx.fillRect(x+7,y+5,6,h-10);
+
+}
+
+function drawBird(){
+
+const x=bird.x;
+const y=bird.y;
+
+fctx.save();
+
+fctx.translate(x,y);
+
+const rotation=
+Math.max(-.45,Math.min(.8,bird.velocity*.05));
+
+fctx.rotate(rotation);
+
+/* shadow */
+
+fctx.fillStyle="#0003";
+
+fctx.beginPath();
+
+fctx.ellipse(0,22,20,6,0,0,Math.PI*2);
+
+fctx.fill();
+
+/* body */
+
+const bodyGrad=
+fctx.createRadialGradient(-6,-7,3,0,0,24);
+
+bodyGrad.addColorStop(0,"#fff36a");
+bodyGrad.addColorStop(.55,"#ffd329");
+bodyGrad.addColorStop(1,"#e59a00");
+
+fctx.fillStyle=bodyGrad;
+
+fctx.beginPath();
+
+fctx.arc(0,0,18,0,Math.PI*2);
+
+fctx.fill();
+
+/* wing */
+
+fctx.fillStyle="#f2b516";
+
+fctx.beginPath();
+
+fctx.ellipse(-8,5,12,7,-.4,0,Math.PI*2);
+
+fctx.fill();
+
+/* eye */
+
+fctx.fillStyle="#fff";
+
+fctx.beginPath();
+
+fctx.arc(7,-8,6,0,Math.PI*2);
+
+fctx.fill();
+
+fctx.fillStyle="#111";
+
+fctx.beginPath();
+
+fctx.arc(9,-8,2.5,0,Math.PI*2);
+
+fctx.fill();
+
+/* beak */
+
+fctx.fillStyle="#f47b20";
+
+fctx.beginPath();
+
+fctx.moveTo(15,-2);
+fctx.lineTo(30,3);
+fctx.lineTo(15,8);
+fctx.closePath();
+
+fctx.fill();
+
+fctx.restore();
+
+}
+
+function spawnFlappyPipe(){
+
+const gap=155;
+
+const minTop=80;
+const maxTop=Math.max(
+minTop+20,
+FH-220-gap
+);
+
+const top=
+minTop+Math.random()*(maxTop-minTop);
+
+pipes.push({
+x:FW+30,
+top:top,
+gap:gap,
+w:58,
+passed:false
+});
+
+}
+
+function flappyCollision(){
+
+/* ground / sky */
+
+if(bird.y-bird.radius<0)
+return true;
+
+if(bird.y+bird.radius>FH-82)
+return true;
+
+for(const p of pipes){
+
+const inX=
+bird.x+bird.radius>p.x &&
+bird.x-bird.radius<p.x+p.w;
+
+if(!inX)continue;
+
+const gapTop=p.top;
+const gapBottom=p.top+p.gap;
+
+if(
+bird.y-bird.radius<gapTop ||
+bird.y+bird.radius>gapBottom
+)
+return true;
+
+}
+
+return false;
+
+}
+
+function flappyGameOver(){
+
+flappyRunning=false;
+
+setTimeout(()=>{
+
+alert(
+"🐦 Game Over!\n\nScore: "+flappyScore
+);
+
+},80);
+
+}
+
+function flappyLoop(){
+
+if(!flappyRunning)return;
+
+drawFlappyBackground();
+
+/* physics */
+
+bird.velocity+=.38;
+bird.y+=bird.velocity;
+
+pipeTimer++;
+
+if(pipeTimer>95){
+
+spawnFlappyPipe();
+
+pipeTimer=0;
+
+}
+
+/* pipes */
+
+for(let i=pipes.length-1;i>=0;i--){
+
+const p=pipes[i];
+
+p.x-=flappySpeed;
+
+drawPipe(
+p.x,
+0,
+p.w,
+p.top,
+true
+);
+
+drawPipe(
+p.x,
+p.top+p.gap,
+p.w,
+FH-(p.top+p.gap)-82,
+false
+);
+
+if(!p.passed&&p.x+p.w<bird.x){
+
+p.passed=true;
+
+flappyScore++;
+
+document.getElementById("flappyScore")
+.textContent=flappyScore;
+
+if(flappyScore%10===0)
+flappySpeed+=.25;
+
+}
+
+if(p.x+p.w<-30)
+pipes.splice(i,1);
+
+}
+
+drawBird();
+
+if(flappyCollision()){
+
+flappyGameOver();
+return;
+
+}
+
+flappyAnimation=
+requestAnimationFrame(flappyLoop);
+
+}
+
+window.addEventListener("resize",()=>{
+if(flappyRunning)resizeFlappy();
+});
+
+
+/* INITIAL */
+
+render();
 
 </script>
 
-
 </body>
-
-</html>
+   </html>
